@@ -1,3 +1,61 @@
 - java reads input from data source (keyboard, file, network, devices ..), and write output into data sinks 
   (console, file, ...).
-- java handles inputs and outputs by Stream interface imlimentations.
+  
+- java handles inputs and outputs using the Stream interface different implimentations.
+
+- java doesn't differenciate between data-sources data, they are all considered as Streams.
+
+- java IO are devised into to bases :
+                                    
+          * character based IO: 2 Bytes streams (used with char sequences like texts ... bcs in java, 1 char occupy 2 bytes).
+          * Byte based IO: 2 Bytes streams (used with everything ...).
+          
+                   ******************* stream impls *******************
+          
+                                            /Stream/
+                                               |
+                                    ___________|_____________
+                                   |                         |
+                             /InputStream/               /OutputStream/
+                                (abstract)                (abstract)
+                                   |                          |
+                             FileInputStream             FileOutputStream
+               
+               
+                    ******************* input stream methodes *******************
+                    
+*  abstract int read();           
+=> read one data byte from the input stream at time, and sets it to a int  (4bits only first bit is filled)
+=> returns -1 when it reaches the end of the stream.
+=> stops when exception occure.
+              
+*  abstract int read(byte[] bytesBuffer); 
+=> read from a source into an array of bytes 
+=> returns the total readed bytes which is the length of the bytesBuffer (not the capacity)!
+
+*  abstract int read(byte[] bytesBuffer, int offset, int length); 
+=> read  length number of byte 
+=> stores in bytesBuffer arry starting from the offset!
+
+                     ******************* output stream methodes *******************
+                     (write to the output stream means to store the )
+* abstract void write(int  byteHolder)
+=> write one data-byte(byteHolder) to the output  stream
+
+* abstract void write(byte[]  bytesBuffer, int offset, int lenght)
+=> write length data-byte to the output  stream starting from offset
+
+* abstract void write(byte[] bytesBuffer) // same as abstract void write(byte[] bytesBuffer bytesBuffer,0 , bytesBuffer.lenght)
+=> write one data-byte to the output  stream.
+
+                      *******************     close stream      *******************
+                      
+ close opened streams, it is done automatically but is tis a good practice to clean up the resources of the system 
+ immidiately.
+ 
+                       *******************  Flush output stream *******************
+                      
+ flush the remainig bytes from the output buffer
+
+                     
+               
