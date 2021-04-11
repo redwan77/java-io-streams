@@ -1,0 +1,3 @@
+- java reads input from data source (keyboard, file, network, devices ..), and write output into data sinks 
+  (console, file, ...).
+- java handles inputs and outputs by Stream interface imlimentations.
